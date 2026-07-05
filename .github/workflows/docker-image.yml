@@ -35,7 +35,7 @@ jobs:
       # <<< ADDED
       - name: Copy React Build to Spring Boot
         run: |
-          rm -rf src/main/resources/static/*
+          mkdir -p src/main/resources/static
           cp -r spring-ai-demo-react/build/* src/main/resources/static/
 
       - name: Build JAR
