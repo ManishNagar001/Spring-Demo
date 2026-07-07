@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import ImageGenerator from './components/ImageGenerator';
+// import ImageGenerator from './components/ImageGenerator';
 import ChatComponent from './components/ChatComponent';
 import RecipeGenerator from './components/RecipeGenerator';
 
