@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 export function ImageFree(){
 
     const[prompt, setPrompt]=useState('');
-    const[imageUrl,setImageUrls]=useState([]);
+    // const[imageUrl,setImageUrls]=useState([]);
     const[furl,setFurl]=useState([]);
 
     const generateImage =async()=>{
