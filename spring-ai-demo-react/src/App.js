@@ -26,11 +26,11 @@ function App() {
        onClick={()=> handleTabChange('recipe-generator')}> Recipe Generator </button>
 
           <div>
-            {/* {activeTab=='image-generator' && <ImageGenerator/>} */}
-             {activeTab=='image-generator' && <ImageFree/>}
+            {/* {activeTab==='image-generator' && <ImageGenerator/>} */}
+             {activeTab==='image-generator' && <ImageFree/>}
 
-             {activeTab=='chat' && <Chat/>}
-           {activeTab=='recipe-generator' && <RecipeGenerator/>}
+             {activeTab==='chat' && <Chat/>}
+           {activeTab==='recipe-generator' && <RecipeGenerator/>}
 
           </div>
       
