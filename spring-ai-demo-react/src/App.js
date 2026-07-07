@@ -14,10 +14,10 @@ function App() {
 
   return (
     <div className="App">
-      <button className={activeTab === 'image-generator' ? 'active' : ''}
+      {/* <button className={activeTab === 'image-generator' ? 'active' : ''}
        onClick={() => handleTabChange('image-generator')}>
         Image Generator
-        </button>
+        </button> */}
       <button  className={activeTab === 'chat' ? 'active' : ''}
       onClick={() => handleTabChange('chat')}>
         Ask AI
@@ -28,7 +28,7 @@ function App() {
         </button>
 
         <div>
-          {activeTab === 'image-generator' && <ImageGenerator/>}
+          {/* {activeTab === 'image-generator' && <ImageGenerator/>} */}
           {activeTab === 'chat' && <ChatComponent/>}
           {activeTab === 'recipe-generator' && <RecipeGenerator/>}
         </div>
