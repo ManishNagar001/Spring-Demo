@@ -19,6 +19,25 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+       # <<< ADDED
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # <<< ADDED
+      - name: Build React App
+        working-directory: spring-ai-demo-react
+        run: |
+          npm install
+          npm run build
+
+      # <<< ADDED
+      - name: Copy React Build to Spring Boot
+        run: |
+          mkdir -p src/main/resources/static
+          cp -r spring-ai-demo-react/build/* src/main/resources/static/
+
       - name: Build JAR
         run: |
           chmod +x ./mvnw
