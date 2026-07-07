@@ -1,52 +1,55 @@
-import React, { useState } from "react";
+import React,{useState} from 'react'
 
-function RecipeGenerator() {
-    const [ingredients, setIngredients] = useState('');
-    const [cuisine, setCuisine] = useState('any');
-    const [dietaryRestrictions, setDietaryRestrictions] = useState('');
-    const [recipe, setRecipe] = useState('');
+export function RecipeGenerator(){
+    
+    const[ingredients, setIngredients]=useState('');
+    
+    const[cusine, setCusine]=useState('any');
+    
+    const[dietaryRestrication, setdietaryRestrication]=useState('');
+    
+    const[recipe, setRecipe]=useState('');
 
+    const GenerateRecipe =async ()=>{
 
-    const createRecipe = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/recipeGenerator?ingredients=${ingredients}&dietaryRestrictions=${dietaryRestrictions}&cuisine=${cuisine}`)
-            const data = await response.text();
-            console.log(data);
-            setRecipe(data);
-        } catch (error) {
-            console.error("Error generating recipe : ", error)
+          try{
+            const response= await fetch(`http://localhost:8080/recipeGenerator?ingredients=${ingredients}&cuisine=${cusine}&dietaryRestications=${dietaryRestrication}`)
+           const data=await response.text();
+           console.log(data) ;
+           setRecipe(data);      
         }
+        catch(error){
+            console.error("Error generating recipe: ",error)
+                  
+        }
+
     };
 
+
     return (
+
         <div>
-            <h2>Create a Recipe</h2>
-            <input
-                type="text"
-                value={ingredients}
-                onChange={(e) => setIngredients(e.target.value)}
-                placeholder="Enter ingredients (comma seperated)"
-            />
 
-            <input
-                type="text"
-                value={cuisine}
-                onChange={(e) => setCuisine(e.target.value)}
-                placeholder="Enter cuisine type"
-            />
+        <h2>Generte Recipe </h2>
+        <input type="text"  value={ingredients}
+        onChange={(e)=>setIngredients(e.target.value)}
+       placeholder="Enter integridients(comman separted" />
+        
+          <input type="text"  value={cusine}
+        onChange={(e)=>setCusine(e.target.value)}
+       placeholder="Enter cusine" />
+        
+          <input type="text"  value={dietaryRestrication}
+        onChange={(e)=>setdietaryRestrication(e.target.value)}
+       placeholder="Enter dietaryRestrication" />
+        
+        <button onClick={GenerateRecipe}> Generate recipe </button>
+         <div className="output">
+            <pre className="recipe-text">{recipe}</pre>
 
-            <input
-                type="text"
-                value={dietaryRestrictions}
-                onChange={(e) => setDietaryRestrictions(e.target.value)}
-                placeholder="Enter dietary restrictions"
-            />
 
-            <button onClick={createRecipe}>Create Recipe</button>
-
-            <div className="output">
-                <pre className="recipe-text">{recipe}</pre>
             </div>
+
         </div>
     );
 }

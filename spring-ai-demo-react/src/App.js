@@ -1,37 +1,39 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css';
-// import ImageGenerator from './components/ImageGenerator';
-import ChatComponent from './components/ChatComponent';
-import RecipeGenerator from './components/RecipeGenerator';
+// import ImageGenerator from './components/imageGenerator';
+import RecipeGenerator from './components/recipeGenerator';
+import ImageFree from './components/imageFree';
+import Chat from './components/chat';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('image-generator');
 
-  const handleTabChange = (tab) => {
-    //alert(tab)
-    setActiveTab(tab);
+  const [activeTab,setActiveTab]=useState('image-generator')
+
+  const handleTabChange=(tab)=>{
+   // alert(tab)
+    setActiveTab(tab)
   };
 
   return (
     <div className="App">
-      {/* <button className={activeTab === 'image-generator' ? 'active' : ''}
-       onClick={() => handleTabChange('image-generator')}>
-        Image Generator
-        </button> */}
-      <button  className={activeTab === 'chat' ? 'active' : ''}
-      onClick={() => handleTabChange('chat')}>
-        Ask AI
-        </button>
-      <button className={activeTab === 'recipe-generator' ? 'active' : ''}
-      onClick={() => handleTabChange('recipe-generator')}>
-        Recipe Generator
-        </button>
+      <h1> Nagar's GPT </h1>
+      <button className={activeTab==='image-generator' ? 'active':' '}
+      onClick={()=> handleTabChange('image-generator')}>
+        Image Generator </button>
+      <button className={ activeTab==='chat' ? 'active': ' '}
+       onClick={()=> handleTabChange('chat')}>Chat </button>
+      <button  className={activeTab==='recipe-generator'? 'active':' '}
+       onClick={()=> handleTabChange('recipe-generator')}> Recipe Generator </button>
 
-        <div>
-          {/* {activeTab === 'image-generator' && <ImageGenerator/>} */}
-          {activeTab === 'chat' && <ChatComponent/>}
-          {activeTab === 'recipe-generator' && <RecipeGenerator/>}
-        </div>
+          <div>
+            {/* {activeTab=='image-generator' && <ImageGenerator/>} */}
+             {activeTab=='image-generator' && <ImageFree/>}
+
+             {activeTab=='chat' && <Chat/>}
+           {activeTab=='recipe-generator' && <RecipeGenerator/>}
+
+          </div>
+      
     </div>
   );
 }
