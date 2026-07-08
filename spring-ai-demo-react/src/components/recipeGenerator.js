@@ -13,7 +13,7 @@ export function RecipeGenerator(){
     const GenerateRecipe =async ()=>{
 
           try{
-            const response= await fetch(`http://localhost:8080/recipeGenerator?ingredients=${ingredients}&cuisine=${cusine}&dietaryRestications=${dietaryRestrication}`)
+            const response= await fetch(`http://98.83.119.171:8080/recipeGenerator?ingredients=${ingredients}&cuisine=${cusine}&dietaryRestications=${dietaryRestrication}`)
            const data=await response.text();
            console.log(data) ;
            setRecipe(data);      
