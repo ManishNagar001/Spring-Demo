@@ -78,5 +78,5 @@ jobs:
             docker run -d \
               --name spring-demo \
               -p 8080:8080 \
-              -e GEMINI_API_KEY=${{ secrets.GOOGLE_GENAI_API_KEY }} \
+              -e GOOGLE_GENAI_API_KEY=${{ secrets.GOOGLE_GENAI_API_KEY }} \
               ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
