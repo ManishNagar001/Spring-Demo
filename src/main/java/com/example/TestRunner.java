@@ -8,8 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TestRunner implements CommandLineRunner {
+public static void main(String[] args) {
 
- System.out.println("ENV = " + System.getenv("GOOGLE_GENAI_API_KEY"));
+    System.out.println("ENV = " + System.getenv("GOOGLE_GENAI_API_KEY"));
 
     SpringApplication.run(AiApplication.class, args);
+}
 }
