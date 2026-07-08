@@ -9,15 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestRunner implements CommandLineRunner {
 
-    @Value("${GOOGLE_GENAI_API_KEY:NOT_FOUND}")
-    private String envKey;
+ System.out.println("ENV = " + System.getenv("GOOGLE_GENAI_API_KEY"));
 
-    @Value("${spring.ai.google.genai.api-key:PROPERTY_NOT_FOUND}")
-    private String propertyKey;
-
-    @Override
-    public void run(String... args) {
-        System.out.println("ENV KEY      = " + envKey);
-        System.out.println("PROPERTY KEY = " + propertyKey);
-    }
+    SpringApplication.run(AiApplication.class, args);
 }
