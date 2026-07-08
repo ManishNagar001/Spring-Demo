@@ -8,7 +8,7 @@ export function Chat(){
    const askAI=async ()=>{
      try{
            setLoading(true);
-            const response= await fetch(`http://localhost:8080/askai?prompt=${prompt}`)
+            const response= await fetch(`http://98.83.119.171:8080/askai?prompt=${prompt}`)
            const data=await response.text();
            console.log(data) ;
            setChatResponse(data);      
