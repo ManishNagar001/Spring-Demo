@@ -4,18 +4,26 @@ export function RecipeGenerator(){
     
     const[ingredients, setIngredients]=useState('');
     
-    const[cusine, setCusine]=useState('any');
+    const[cusine, setCusine]=useState('');
     
     const[dietaryRestrication, setdietaryRestrication]=useState('');
     
     const[recipe, setRecipe]=useState('');
 
+    const[output, setOutput]=useState(false);
+
+    const[loading,setLoading]=useState(false);
+
     const GenerateRecipe =async ()=>{
 
           try{
+            setOutput(true);
+            setLoading(true);
             const response= await fetch(`http://98.83.119.171:8080/recipeGenerator?ingredients=${ingredients}&cuisine=${cusine}&dietaryRestications=${dietaryRestrication}`)
            const data=await response.text();
            console.log(data) ;
+           setLoading(false);
+           
            setRecipe(data);      
         }
         catch(error){
@@ -30,10 +38,10 @@ export function RecipeGenerator(){
 
         <div>
 
-        <h2>Generte Recipe </h2>
+        <h2>Generate Recipe </h2>
         <input type="text"  value={ingredients}
         onChange={(e)=>setIngredients(e.target.value)}
-       placeholder="Enter integridients(comman separted" />
+       placeholder="Enter integridients(comma separted)" />
         
           <input type="text"  value={cusine}
         onChange={(e)=>setCusine(e.target.value)}
@@ -41,14 +49,18 @@ export function RecipeGenerator(){
         
           <input type="text"  value={dietaryRestrication}
         onChange={(e)=>setdietaryRestrication(e.target.value)}
-       placeholder="Enter dietaryRestrication" />
+       placeholder="Enter Dietay Restrication" />
         
         <button onClick={GenerateRecipe}> Generate recipe </button>
+         
+         { output &&(
          <div className="output">
-            <pre className="recipe-text">{recipe}</pre>
-
-
+            {
+               loading?(<b>🍴 Mixing flavors with Nagar's GPT magic...</b>): (<pre className="recipe-text">{recipe}</pre>)
+            }
             </div>
+         )
+}
 
         </div>
     );

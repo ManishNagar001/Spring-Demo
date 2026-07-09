@@ -3,10 +3,12 @@ import React,{useState} from 'react'
 export function Chat(){
     const [prompt, setPrompt]=useState('');
     const [chatResponse,setChatResponse]=useState('');
-    const[loading, setLoading]=useState(false)
+    const[loading, setLoading]=useState(false);
+    const[output,setOutput]=useState(false);
 
    const askAI=async ()=>{
-     try{
+     try{ 
+           setOutput(true);
            setLoading(true);
             const response= await fetch(`http://98.83.119.171:8080/askai?prompt=${prompt}`)
            const data=await response.text();
@@ -31,7 +33,7 @@ export function Chat(){
            />
 
            <button onClick={askAI}> Ask AI </button>
-
+          { output && (
            <div className="output">
             {
                 loading?(<p> 💸 Paisa bachaya hai, ab thoda time invest karo.</p>):(<p>  {chatResponse}</p>)
@@ -39,6 +41,8 @@ export function Chat(){
 
             
             </div>
+          )
+}
 
         </div>
     );

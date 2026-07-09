@@ -5,9 +5,11 @@ export function ImageFree(){
     const[prompt, setPrompt]=useState('');
     // const[imageUrl,setImageUrls]=useState([]);
     const[furl,setFurl]=useState([]);
+    const[output, setOutput]=useState(false);
 
     const generateImage =async()=>{
         try{
+            setOutput(true);
             const response=`https://image.pollinations.ai/${prompt}`
           // const urls=await response.json(); 
            setFurl(response);      
@@ -20,13 +22,13 @@ export function ImageFree(){
     };
     return (
      <div className="tab-content">
-         <h2>Generte Images </h2>
+         <h2>Generate Images </h2>
          <input type="text" value={prompt} 
            onChange={(e)=> setPrompt(e.target.value)}
            placeholder="Enter prompt for image"/>
 
 <button onClick={generateImage}> Generate Image </button>
-       
+       {output &&(
        <div className="image-grid">
         {/* {imageUrl.map((url,index) =>(
             <img key={index} src={url} alt={`Generated ${index}`} />
@@ -37,9 +39,10 @@ export function ImageFree(){
            className="empty-image-slot"></div>
        ))} */}
 
-       <img src={furl} alt="Something" />
+       <img src={furl} alt="Enter prompt to generate Image" />
 
        </div>
+       )}
         </div>
     );
 }
