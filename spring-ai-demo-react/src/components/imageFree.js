@@ -39,7 +39,7 @@ export function ImageFree(){
            className="empty-image-slot"></div>
        ))} */}
 
-       <img src={furl} alt="Enter prompt to generate Image" />
+       <img src={furl} alt="Something" />
 
        </div>
        )}
